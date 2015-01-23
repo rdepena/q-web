@@ -2,7 +2,7 @@
   <h4 class="header">Artifacts:</h4>
   <ul>
     <li ng-repeat="artifact in artifacts">
-      <a ng-click="artifactListCtrl.selectItem(artifact)" class="waves-effect waves-light-blue btn-flat">
+      <a ng-click="artifactListCtrl.selectItem(artifact)" class="waves-effect waves-red btn-flat">
           {{artifact.name}}
          <i ng-show="artifact == selectedArtifact" class="small mdi-editor-insert-chart right"></i>
       </a>

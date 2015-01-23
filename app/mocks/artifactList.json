@@ -1,49 +1,65 @@
 [{
   "name" : "One Name 1",
-  "description" : "this is One Name 1"
+  "description" : "this is One Name 1",
+  "type": "table"
 }, {
   "name" : "One Name 2",
-  "description" : "this is One Name 2"
+  "description" : "this is One Name 2",
+  "type": "table"
 }, {
   "name" : "One Name 3",
-  "description" : "this is One Name 3"
+  "description" : "this is One Name 3",
+  "type": "symbol"
 }, {
   "name" : "One Name 4",
-  "description" : "this is One Name 4"
+  "description" : "this is One Name 4",
+  "type": "int"
 },{
   "name" : "One Name 5",
-  "description" : "this is One Name 5"
+  "description" : "this is One Name 5",
+  "type": "date"
 },{
   "name" : "One Name 6",
-  "description" : "this is One Name 6"
+  "description" : "this is One Name 6",
+  "type": "table"
 },{
   "name" : "One Name 7",
-  "description" : "this is One Name 7"
+  "description" : "this is One Name 7",
+  "type": "table"
 },{
   "name" : "One Name 8",
-  "description" : "this is One Name 8"
+  "description" : "this is One Name 8",
+  "type": "int"
 },{
   "name" : "One Name 9",
-  "description" : "this is One Name 9"
+  "description" : "this is One Name 9",
+  "type": "table"
 },{
   "name" : "One Name 10",
-  "description" : "this is One Name 10"
+  "description" : "this is One Name 10",
+  "type": "symbol"
 },{
   "name" : "One Name 11",
-  "description" : "this is One Name 11"
+  "description" : "this is One Name 11",
+  "type": "table"
 },{
   "name" : "One Name 12",
-  "description" : "this is One Name 12"
+  "description" : "this is One Name 12",
+  "type": "table"
 },{
   "name" : "One Name 13",
-  "description" : "this is One Name 13"
+  "description" : "this is One Name 13",
+  "type": "symbol"
 },{
   "name" : "One Name 14",
-  "description" : "this is One Name 14"
+  "description" : "this is One Name 14",
+  "type": "table"
 },{
   "name" : "One Name 15",
-  "description" : "this is One Name 15"
+  "description" : "this is One Name 15",
+  "type": "int"
 },{
   "name" : "One Name 16",
-  "description" : "this is One Name 16"
+  "description" : "this is One Name 16",
+  "type": "date"
 }]

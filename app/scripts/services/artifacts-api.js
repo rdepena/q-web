@@ -15,7 +15,11 @@ angular.module('qWebApp')
       return $http.get('mocks/artifactList.json');
     };
 
-    that.getArtifact = function () {
+    that.getTableArtifact = function () {
       return $http.get('mocks/mockArtifact.json');
+    };
+
+    that.getValueArtifact = function () {
+      return $http.get('mocks/mockValueArtifact.json');
     };
   });

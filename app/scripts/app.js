@@ -23,6 +23,11 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/query', {
+        templateUrl: 'views/query.html',
+        controller: 'QueryCtrl',
+        controllerAs: 'queryCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
