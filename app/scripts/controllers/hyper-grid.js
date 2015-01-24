@@ -12,28 +12,27 @@ angular.module('qWebApp')
     var jsonGrid,
       jsonModel;
 
-    $scope.$watch('selectedArtifact', function (selectedArtifact) {
-      if (!angular.equals(selectedArtifact, {})) {
-        console.log('this changed', selectedArtifact);
-        var getFunction = selectedArtifact.type === 'table' ? getTable : getValue;
+    // $scope.$watch('selectedArtifact', function (selectedArtifact) {
+    //   if (!angular.equals(selectedArtifact, {})) {
+    //     console.log('this changed', selectedArtifact);
+    //     var getFunction = selectedArtifact.type === 99 || selectedArtifact.type === 98 ? getTable : getValue;
 
-        getFunction(render);
-      }
-    });
+    //     getFunction(render);
+    //   }
+    // });
 
-    setTimeout(init, 5);
+    setTimeout(init, 100);
 
     function getTable(callBack) {
       artifactsApi.getTableArtifact($scope.selectedArtifact).then(function (artifactResponse) {
-        if (artifactResponse.data.length < 1) {
-          return;
-        }
-        callBack(artifactResponse.data);
+        callBack(artifactResponse);
       });
     }
     function getValue(callBack) {
       artifactsApi.getValueArtifact($scope.selectedArtifact).then(function (artifactResponse) {
-        callBack([artifactResponse.data]);
+        console.log('I got the data right here');
+        console.log(artifactResponse);
+        callBack(artifactResponse);
       });
     }
 
@@ -41,8 +40,12 @@ angular.module('qWebApp')
       var headers = _.keys(data[0]);
       jsonModel.setHeaders(headers);
       jsonModel.setFields(headers);
-      jsonModel.setData(data);
+
+      console.log(headers);
+      console.log('this is the data');
       console.log(data);
+      jsonModel.setData(data);
+
     }
     //setup random data for the JSON tab example
     function init (){

@@ -8,18 +8,18 @@
  * Service in the qWebApp.
  */
 angular.module('qWebApp')
-  .service('artifactsApi', function artifactsApi($http) {
+  .service('artifactsApi', function artifactsApi(qApi, $http) {
     var that = this;
 
     that.getArtifactList = function () {
-      return $http.get('mocks/artifactList.json');
+      return qApi.getVariables();
     };
 
-    that.getTableArtifact = function () {
-      return $http.get('mocks/mockArtifact.json');
+    that.getTableArtifact = function (artifact) {
+      return qApi.getValue(artifact.name);
     };
 
-    that.getValueArtifact = function () {
-      return $http.get('mocks/mockValueArtifact.json');
+    that.getValueArtifact = function (artifact) {
+      return qApi.getValue(artifact.name);
     };
   });
