@@ -1,7 +1,7 @@
 <div class="artifact-list">
-  <h4 class="header">Artifacts:</h4>
+  <input id="icon_prefix" type="text" placeholder="Search" ng-model="search" >
   <ul>
-    <li ng-repeat="artifact in artifacts">
+    <li ng-repeat="artifact in artifacts | filter:search">
       <a ng-click="artifactListCtrl.selectItem(artifact)" class="waves-effect waves-red btn-flat">
           {{artifact.name}}
          <i ng-show="artifact == selectedArtifact" class="small mdi-editor-insert-chart right"></i>
