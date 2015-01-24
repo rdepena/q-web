@@ -1,14 +1,19 @@
 <div>
   <div>
-    <h4 class="header">Render:</h4>
+    <h4 class="header">Render: {{selectedArtifact.typeObject.name}}</h4>
   </div>
   <div class="col s2">
     <ul ng-if="artifactRendererCtrl.renderStyle == 'array'">
-      <li class="collection-item" ng-repeat="artifact in artifactRendererCtrl.data track by $id(artifact)">{{artifact}}</li>
+      <li class="collection-item" ng-repeat="artifact in artifactRendererCtrl.data track by $id(artifact)">{{artifact}} {{artifact.type}}</li>
     </ul>
     <p ng-if="artifactRendererCtrl.renderStyle == 'value'">
-      {{artifactRendererCtrl.data}}
+      {{artifactRendererCtrl.data}} {{artifact.type}}
     </p>
+  </div>
+  <div ng-if="artifactRendererCtrl.renderStyle == 'grid'" class="grid-contain">
+    <fin-hypergrid class="abs">
+        <fin-hypergrid-behavior-q url="ws://localhost:9000"></fin-hypergrid-behavior-q>
+    </fin-hypergrid>
   </div>
   <div ng-transclude="">
   </div>

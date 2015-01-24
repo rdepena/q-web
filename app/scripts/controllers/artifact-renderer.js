@@ -21,6 +21,7 @@ angular.module('qWebApp')
       if (selectedArtifact.type === 99 || selectedArtifact.type === 98) {
         //do fin grid here man;
         console.log('this could be the grid.');
+        that.renderStyle = renderTypes.grid;
       }else {
         getValue(selectedArtifact);
       }

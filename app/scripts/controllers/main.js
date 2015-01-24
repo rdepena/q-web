@@ -23,7 +23,7 @@ angular.module('qWebApp')
     setTimeout(function (){
       artifactsApi.getArtifactList().then(function (artifacts) {
         console.log(artifacts);
-        console.log(that.tableList.concat(artifacts.data));
+        console.log(that.tableList.concat(artifacts));
         that.tableList = artifacts;
       });
     }, 1000);
