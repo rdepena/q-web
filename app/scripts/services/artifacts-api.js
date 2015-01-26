@@ -13,9 +13,9 @@ angular.module('qWebApp')
 
     that.getArtifactList = function () {
       return qApi.getVariables().then(function (artifactResponse) {
-        _.forEach(artifactResponse, (function (artifact) {
+        _.forEach(artifactResponse, function (artifact) {
           artifact.typeObject =  _.chain(qTypes).where({num: artifact.type}).first().value();
-        }));
+        });
         console.log(artifactResponse);
         return artifactResponse;
       });

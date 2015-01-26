@@ -17,7 +17,6 @@ angular.module('qWebApp')
       };
 
     $scope.$watch('selectedArtifact', function (selectedArtifact) {
-      console.log('yea that changed dog');
       if (selectedArtifact.type === 99 || selectedArtifact.type === 98) {
         //do fin grid here man;
         console.log('this could be the grid.');
@@ -29,9 +28,8 @@ angular.module('qWebApp')
 
     function getValue(selectedArtifact) {
       artifactsApi.getTableArtifact(selectedArtifact).then(function (artifactResponse) {
-        console.log(artifactResponse)
         that.renderStyle = angular.isArray(artifactResponse) ? renderTypes.array : renderTypes.value;
         that.data = artifactResponse;
       });
-    };
+    }
   });

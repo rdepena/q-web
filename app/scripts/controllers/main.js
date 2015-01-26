@@ -8,7 +8,7 @@
  * Controller of the qWebApp
  */
 angular.module('qWebApp')
-  .controller('MainCtrl', function (artifactsApi, qApi, $scope) {
+  .controller('MainCtrl', function (artifactsApi) {
     var that = this;
 
     that.selectedArtifact = {};
@@ -27,9 +27,4 @@ angular.module('qWebApp')
         that.tableList = artifacts;
       });
     }, 1000);
-
-
-    $scope.$watch('selectedArtifact', function (selectedArtifact) {
-      console.log('yea that changed dog');
-    });
   });
