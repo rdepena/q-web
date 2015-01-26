@@ -13,7 +13,8 @@ angular.module('qWebApp')
       renderTypes = {
         array : 'array',
         grid: 'grid',
-        value: 'value'
+        value: 'value',
+        default: 'default'
       };
 
     $scope.$watch('selectedArtifact', function (selectedArtifact) {
@@ -27,8 +28,11 @@ angular.module('qWebApp')
     });
 
     function getValue(selectedArtifact) {
-      artifactsApi.getTableArtifact(selectedArtifact).then(function (artifactResponse) {
+      artifactsApi.getValueArtifact(selectedArtifact).then(function (artifactResponse) {
         that.renderStyle = angular.isArray(artifactResponse) ? renderTypes.array : renderTypes.value;
+        if (!selectedArtifact.type) {
+          that.renderStyle = renderTypes.default;
+        }
         that.data = artifactResponse;
       });
     }

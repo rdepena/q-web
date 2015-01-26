@@ -14,23 +14,20 @@ angular.module('qWebApp')
     var requestMap = {},
       commands = {
         fetchVariables: 'fetchVariables',
-        fetchData: 'fetchData'
+        fetchData: 'fetchData',
+        fetchAsString: 'fetchAsString'
       },
       isConnected = false;
 
-    var ws = new WebSocket('ws://localhost:12345');
+    var ws = new WebSocket('ws://localhost:5000');
 
     ws.onopen = function () {
-      console.log('woohooo connected to q');
       isConnected = true;
     };
 
     ws.onmessage = function (message) {
-      console.log('from q');
-      console.log(message.data);
       var payload = JSON.parse(message.data);
 
-      console.log(payload);
       if(angular.isFunction(requestMap[payload.cmd])) {
         requestMap[payload.cmd](payload.data);
       }
@@ -38,6 +35,10 @@ angular.module('qWebApp')
 
     that.getVariables = function () {
       return qRequest(commands.fetchVariables, {});
+    };
+
+    that.getStringValue = function (artifactName) {
+      return qRequest(commands.fetchAsString, artifactName);
     };
 
     that.getValue = function (artifactName) {
@@ -54,7 +55,8 @@ angular.module('qWebApp')
 
         ws.send(JSON.stringify({
           cmd: command,
-          data : data
+          data : data,
+          id:'1'
         }));
       }
 

@@ -16,7 +16,6 @@ angular.module('qWebApp')
         _.forEach(artifactResponse, function (artifact) {
           artifact.typeObject =  _.chain(qTypes).where({num: artifact.type}).first().value();
         });
-        console.log(artifactResponse);
         return artifactResponse;
       });
     };
@@ -26,6 +25,10 @@ angular.module('qWebApp')
     };
 
     that.getValueArtifact = function (artifact) {
-      return qApi.getValue(artifact.name);
+      if (artifact.typeObject) {
+        return qApi.getValue(artifact.name);
+      } else {
+        return qApi.getStringValue(artifact.name);
+      }
     };
   });

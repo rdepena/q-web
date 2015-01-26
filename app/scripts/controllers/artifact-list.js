@@ -12,6 +12,5 @@ angular.module('qWebApp')
     var that = this;
     that.selectItem = function (item) {
       $scope.selectedArtifact = item;
-      console.log(item);
     };
   });
