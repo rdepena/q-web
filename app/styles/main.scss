@@ -1,5 +1,16 @@
+body {
+  overflow: hidden;
+}
 .header {
   color: #f44336
+}
+
+::-webkit-input-placeholder {
+    color: #ffcdd2;
+}
+
+.row .col.s10 {
+  margin-top: 10px;
 }
 
 fin-hypergrid {

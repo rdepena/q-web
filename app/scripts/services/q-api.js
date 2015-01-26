@@ -16,10 +16,9 @@ angular.module('qWebApp')
         fetchVariables: 'fetchVariables',
         fetchData: 'fetchData'
       },
-      isConnected = false,
-      queuedRequests = [];
+      isConnected = false;
 
-    var ws = new WebSocket("ws://localhost:12345");
+    var ws = new WebSocket('ws://localhost:12345');
 
     ws.onopen = function () {
       console.log('woohooo connected to q');
@@ -60,6 +59,6 @@ angular.module('qWebApp')
       }
 
       return deffered.promise;
-    };
+    }
 
   });
