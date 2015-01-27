@@ -36,6 +36,10 @@ angular.module('qWebApp')
 
         processRequest(payload);
       };
+      ws.onerror = function (error) {
+        console.log(error);
+        alert(error);
+      }
     }
 
     that.getVariables = function () {

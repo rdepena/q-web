@@ -1,0 +1,20 @@
+{
+    "startup_app": {
+        "name": "kdbWeb",
+        "description": "OpenFin POC",
+        "url": "http://localhost:9000/index.html",
+        "uuid": "kdbWeb-ngix8m8r6vx9lik9",
+        "autoShow": true,
+        "applicationIcon": "http://localhost:9000/favico.ico"
+    },
+    "runtime": {
+        "arguments": "",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Openfin POC",
+        "name": "Openfin POC",
+        "icon": "http://localhost:9000/favico.ico"
+    }
+}

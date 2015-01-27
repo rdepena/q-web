@@ -1,22 +1,22 @@
 <div class="row">
   <h4 class="header">KDB+ Config:</h4>
-  <form class="col s6 " ng-submit="configCtrl.save()">
+  <form class="col s8 " ng-submit="configCtrl.save()">
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s8">
         <i class="mdi-communication-business prefix active"></i>
         <input id="icon_prefix" type="text" ng-model="configCtrl.config.serverAddress" class="validate">
         <label for="icon_prefix" class="active">Kdb+ Server</label>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s8">
         <i class="mdi-av-timer prefix active"></i>
         <input id="icon_telephone" type="text" ng-model="configCtrl.config.varPollSeconds" class="validate">
         <label for="icon_telephone" class="active">Variable poll interval seconds</label>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s8">
         <i class="mdi-content-save prefix active"></i>
         <input type="checkbox" ng-model="configCtrl.rememberSettings" id="test5" />
         <label for="test5">Remember these settings</label>
