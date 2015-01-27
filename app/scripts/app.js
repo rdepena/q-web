@@ -10,14 +10,22 @@
  */
 angular
   .module('qWebApp', [
-    'ngRoute'
+    'ngRoute',
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'mainCtrl'
+        controllerAs: 'mainCtrl',
+        resolve: {
+          settings: function (configApi, $location){
+            return configApi.get().catch(function (){
+              $location.path('/config');
+            });
+          }
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -27,6 +35,11 @@ angular
         templateUrl: 'views/query.html',
         controller: 'QueryCtrl',
         controllerAs: 'queryCtrl'
+      })
+      .when('/config', {
+        templateUrl: 'views/config.html',
+        controller: 'ConfigCtrl',
+        controllerAs: 'configCtrl'
       })
       .otherwise({
         redirectTo: '/'

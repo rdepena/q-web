@@ -8,8 +8,9 @@
  * Service in the qWebApp.
  */
 angular.module('qWebApp')
-  .service('qApi', function qApi($q) {
-    var that = this;
+  .service('qApi', function qApi($q, configApi) {
+    var that = this,
+      ws;
 
     var requestMap = {},
       commands = {
@@ -17,21 +18,27 @@ angular.module('qWebApp')
         fetchData: 'fetchData',
         fetchAsString: 'fetchAsString'
       },
-      isConnected = false;
+      isConnected = false,
+      config;
 
-    var ws = new WebSocket('ws://localhost:5000');
+    configApi.get().then(function (conf) {
+      config = conf;
+      init();
+    });
 
-    ws.onopen = function () {
-      isConnected = true;
-    };
+    function init () {
+      ws = new WebSocket(config.data.serverAddress);
+      ws.onopen = function () {
+        isConnected = true;
+      };
+      ws.onmessage = function (message) {
+        var payload = JSON.parse(message.data);
 
-    ws.onmessage = function (message) {
-      var payload = JSON.parse(message.data);
-
-      if(angular.isFunction(requestMap[payload.cmd])) {
-        requestMap[payload.cmd](payload.data);
-      }
-    };
+        if(angular.isFunction(requestMap[payload.cmd])) {
+          requestMap[payload.cmd](payload.data);
+        }
+      };
+    }
 
     that.getVariables = function () {
       return qRequest(commands.fetchVariables, {});
