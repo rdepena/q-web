@@ -12,7 +12,7 @@ angular.module('qWebApp')
     var that = this,
       ws;
 
-    var requestMap = {},
+    var requestBuffer = [],
       commands = {
         fetchVariables: 'fetchVariables',
         fetchData: 'fetchData',
@@ -34,9 +34,7 @@ angular.module('qWebApp')
       ws.onmessage = function (message) {
         var payload = JSON.parse(message.data);
 
-        if(angular.isFunction(requestMap[payload.cmd])) {
-          requestMap[payload.cmd](payload.data);
-        }
+        processRequest(payload);
       };
     }
 
@@ -53,21 +51,37 @@ angular.module('qWebApp')
     };
 
     function qRequest(command, data) {
-      var deffered = $q.defer();
+      var deffered = $q.defer(),
+        requestId = Date.now().toString(),
+        requestObject = JSON.stringify({
+            cmd: command,
+            data : data,
+            id: requestId
+          });
 
       if(isConnected) {
-        requestMap[command] = function(data) {
+        addToRequestBuffer(requestId, function(data) {
           deffered.resolve(data);
-        };
-
-        ws.send(JSON.stringify({
-          cmd: command,
-          data : data,
-          id:'1'
-        }));
+        });
+        ws.send(requestObject);
       }
 
       return deffered.promise;
+    }
+
+    function processRequest(responseObject) {
+      var request = _.chain(requestBuffer)
+      .where({id: responseObject.id})
+      .first()
+      .value();
+
+      if(_.isFunction(request.funct)){
+        request.funct(responseObject.data);
+      }
+    }
+
+    function addToRequestBuffer(id, funct) {
+        requestBuffer.push({id:id, funct:funct});
     }
 
   });
